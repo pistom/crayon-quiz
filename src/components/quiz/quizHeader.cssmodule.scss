@@ -1,0 +1,11 @@
+.questionsList-component {
+    .questionsList {
+        &__list {
+            padding-left: 0;
+            list-style: none;
+        }
+        &__item {
+            display: inline-block;
+        }
+    }
+}

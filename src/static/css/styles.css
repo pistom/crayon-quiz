@@ -1,0 +1,56 @@
+.question__answersAnswer span {
+    display: inline-block;
+    box-sizing: border-box;
+    margin: 5px 0;
+    padding: 2px 10px;
+    border: 1px solid transparent
+}
+
+.quizNavigation {
+    margin: 0 10px;
+}
+
+.quizNavigation:after {
+    content:"";
+    display:block;
+    clear:both;
+}
+.quizNavigation__navigation {
+    border-width: 1px 0;
+    border-style: solid;
+    border-color: #ddd;
+    padding: 10px 0;
+    margin-bottom:10px;
+}
+.quizNavigation__navigation:after {
+    content:"";
+    display:block;
+    clear:both;
+}
+
+.quizNavigation__navigationPrev {
+    float:left;
+}
+
+.quizNavigation__navigationNext {
+    float:right;
+}
+
+.questionsList__list {
+    padding-left: 0;
+    list-style: none;
+}
+
+.questionsList__item {
+    display: inline-block;
+    width: 20px;
+    overflow: hidden;
+    padding: 2px 5px;
+    margin: 0 2px;
+    background-color: #aaa
+}
+
+.resultsQuestionsList__question {
+    border-top: 1px dashed #aaa;
+    margin-bottom: 20px;
+}
