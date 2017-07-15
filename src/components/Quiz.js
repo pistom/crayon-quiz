@@ -19,11 +19,11 @@ class Quiz extends React.Component {
     this.props.actions.getQuiz(quiz);
     console.log(this.props);
   }
-  
+
   _handleChangeQuestion(id) {
-    let firstQuestionId = this.props.quiz.questions[0].id;
-    let lastQuestionId = this.props.quiz.questions[this.props.quiz.questions.length-1].id;
-    let newId = (id < firstQuestionId) ? firstQuestionId :
+    const firstQuestionId = this.props.quiz.questions[0].id;
+    const lastQuestionId = this.props.quiz.questions[this.props.quiz.questions.length - 1].id;
+    const newId = (id < firstQuestionId) ? firstQuestionId :
             (id > lastQuestionId) ? lastQuestionId : id;
     this.props.actions.changeQuestion(newId);
   }
@@ -35,9 +35,9 @@ class Quiz extends React.Component {
   }
 
   _handleOnSelectAnswer(questionId, answerId) {
-    if(!this.props.quiz.questions[questionId-1].multiple_choice) {
+    if (!this.props.quiz.questions[questionId - 1].multiple_choice) {
       this.props.actions.clearSelectedAnswers(questionId);
-    } 
+    }
     this.props.actions.selectAnswer(questionId, answerId);
   }
 
@@ -45,44 +45,45 @@ class Quiz extends React.Component {
     return (
       <div className="quiz-component" styleName="quiz-component">
         { this.props.quiz.current_question === null ?
-            this.props.quiz.finished === false ? 
-              <Start 
-                        onStartQuiz={this._handleChangeQuestion.bind(this)} 
-                        quizTitle={this.props.quiz.title}
-              /> : 
+            this.props.quiz.finished === false ?
+              <Start
+                onStartQuiz={this._handleChangeQuestion.bind(this)}
+                quizTitle={this.props.quiz.title}
+              /> :
               <div>
-                <QuizHeader 
-                          quizTitle={this.props.quiz.title} 
+                <QuizHeader
+                  quizTitle={this.props.quiz.title}
                 />
-                <End 
-                          questionsList={this.props.quiz.questions}
-                          answersList={this.props.quiz.answers}
-                          selectedAnswers={this.props.selectedAnswers}
-                          correctAnswers={this.props.correctAnswers}
+                <End
+                  questionsList={this.props.quiz.questions}
+                  answersList={this.props.quiz.answers}
+                  selectedAnswers={this.props.selectedAnswers}
+                  correctAnswers={this.props.correctAnswers}
                 />
               </div> :
-            <div>
-              <QuizHeader 
-                        quizTitle={this.props.quiz.title} 
+              <div>
+              <QuizHeader
+                quizTitle={this.props.quiz.title}
               />
-              
-              <QuestionsList questions={this.props.quiz.questions} 
-                        currentQuestionId={this.props.quiz.current_question}
-                        onChangeQuestion={this._handleChangeQuestion.bind(this)}
+
+              <QuestionsList
+questions={this.props.quiz.questions}
+                currentQuestionId={this.props.quiz.current_question}
+                onChangeQuestion={this._handleChangeQuestion.bind(this)}
               />
               <Question
-                        question={this.props.quiz.questions[this.props.quiz.current_question-1]}
-                        answers={this.props.quiz.answers.filter((answer)=>{
-                          if(this.props.quiz.questions[this.props.quiz.current_question-1].answers.indexOf(answer.id) !== -1)
-                            return answer
-                          })}
-                        onSelectAnswer={this._handleOnSelectAnswer.bind(this)}
-                        selectedAnswers={this.props.selectedAnswers}
+                question={this.props.quiz.questions[this.props.quiz.current_question - 1]}
+                answers={this.props.quiz.answers.filter((answer) => {
+                          if (this.props.quiz.questions[this.props.quiz.current_question - 1].answers.indexOf(answer.id) !== -1)
+                            {return answer};
+                        })}
+                onSelectAnswer={this._handleOnSelectAnswer.bind(this)}
+                selectedAnswers={this.props.selectedAnswers}
               />
-              <QuizNav 
-                        id={this.props.quiz.current_question}
-                        onChangeQuestion={this._handleChangeQuestion.bind(this)}
-                        onFinishQuiz={this._handleFinishQuiz.bind(this)}
+              <QuizNav
+                id={this.props.quiz.current_question}
+                onChangeQuestion={this._handleChangeQuestion.bind(this)}
+                onFinishQuiz={this._handleFinishQuiz.bind(this)}
               />
             </div>
           }
