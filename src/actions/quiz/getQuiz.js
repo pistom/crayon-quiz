@@ -6,7 +6,7 @@ function getQuiz() {
   return {
     type: 'GET_QUIZ',
     payload: {
-      promise: fetch('http://www.cinquiemecrayon.eu/!pliki/crayon-quiz-api/quiz.php')
+      promise: fetch('https://www.cinquiemecrayon.eu/!pliki/crayon-quiz-api/quiz.php')
         .then(response => response.json())
     }
   };
