@@ -1,20 +1,45 @@
-/* Define your initial state here.
- *
- * If you change the type from object to something else, do not forget to update
- * src/container/App.js accordingly.
- */
-import { GET_CORRECT_ANSWERS } from '../actions/const';
+import {
+  GET_ANSWERS_FULFILLED,
+  GET_ANSWERS_PENDING,
+  GET_ANSWERS_REJECTED
+ } from '../actions/const';
 
-const initialState = {};
+const initialState = {
+  isLoadingAnswers: true,
+  loadingAnswersError: false,
+  questions: undefined
+};
 
 function reducer(state = initialState, action) {
 
   switch (action.type) {
-    
-    case GET_CORRECT_ANSWERS: {
-      return action.correctAnswers;
+
+    case GET_ANSWERS_PENDING: {
+      console.log(GET_ANSWERS_PENDING);
+      const nextState = Object.assign({}, state, {
+        isLoadingAnswers: true,
+        loadingAnswersError: false
+      });
+      return nextState;
     }
-    
+
+    case GET_ANSWERS_FULFILLED: {
+      console.log(GET_ANSWERS_FULFILLED);
+      const nextState = Object.assign({}, state, action.payload, {
+        isLoadingAnswers: false
+      });
+      return nextState;
+    }
+
+    case GET_ANSWERS_REJECTED: {
+      console.log(GET_ANSWERS_REJECTED);
+      const nextState = Object.assign({}, state, {
+        isLoadingAnswers: false,
+        loadingAnswersError: true
+      });
+      return nextState;
+    }
+
     default: {
       return state;
     }

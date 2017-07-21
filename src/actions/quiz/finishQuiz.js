@@ -4,4 +4,4 @@ function action() {
   return { type: FINISH_QUIZ };
 }
 
-module.exports = action; 
+module.exports = action;

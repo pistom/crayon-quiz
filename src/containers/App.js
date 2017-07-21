@@ -11,12 +11,13 @@ import React, {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import {
-  getQuiz,
   changeQuestion,
   finishQuiz,
   selectAnswer,
   getCorrectAnswers,
-  clearSelectedAnswers
+  clearSelectedAnswers,
+  getQuiz,
+  getAnswers
 } from '../actions/';
 import Main from '../components/App';
 /* Populated by react-webpack-redux:reducer */
@@ -28,7 +29,8 @@ class App extends Component {
         actions={actions}
         quiz={quiz}
         selectedAnswers={selectedAnswers}
-        correctAnswers={correctAnswers}/>
+        correctAnswers={correctAnswers}
+        />
     );
   }
 }
@@ -39,12 +41,13 @@ class App extends Component {
  */
 App.propTypes = {
   actions: PropTypes.shape({
-    getQuiz: PropTypes.func.isRequired,
     changeQuestion: PropTypes.func.isRequired,
     finishQuiz: PropTypes.func.isRequired,
     selectAnswer: PropTypes.func.isRequired,
     getCorrectAnswers: PropTypes.func.isRequired,
-    clearSelectedAnswers: PropTypes.func.isRequired
+    clearSelectedAnswers: PropTypes.func.isRequired,
+    getQuiz: PropTypes.func.isRequired,
+    getAnswers: PropTypes.func.isRequired
   }),
   quiz: PropTypes.shape({}),
   selectedAnswers: PropTypes.shape({}),
@@ -63,12 +66,13 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   /* Populated by react-webpack-redux:action */
   const actions = {
-    getQuiz,
     changeQuestion,
     finishQuiz,
     selectAnswer,
     getCorrectAnswers,
-    clearSelectedAnswers
+    clearSelectedAnswers,
+    getQuiz,
+    getAnswers
   };
   const actionMap = { actions: bindActionCreators(actions, dispatch) };
   return actionMap;

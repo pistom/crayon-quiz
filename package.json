@@ -68,12 +68,16 @@
   },
   "dependencies": {
     "cross-env": "^3.1.0",
+    "isomorphic-fetch": "^2.2.1",
+    "prop-types": "^15.5.10",
     "react": "^15.0.1",
     "react-css-modules": "^3.7.10",
     "react-dom": "^15.0.1",
     "react-hot-loader": "^3.0.0-beta.6",
     "react-redux": "^5.0.5",
     "redux": "^3.7.1",
+    "redux-promise-middleware": "^4.3.0",
+    "remote-redux-devtools": "^0.5.12",
     "webpack": "^2.1.0-beta.6"
   }
 }
